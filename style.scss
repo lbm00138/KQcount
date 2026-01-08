@@ -1,0 +1,204 @@
+$panelC: rgb(150,150,150);
+$resultW: 450px;
+$resultH: 100px;
+$resultFS: 30px;
+$btnpanelW: 500px;
+$btnpanelH: 500px;
+$btnpanel_space: 100px;
+$AW: 550px;
+$AH: 730px;
+$btnW : 80px;
+$btnH : 80px;
+$btnFS : 20px;
+$btnBGC: lightgreen;
+$btnBGC_ho1: yellow;
+$btnBGC_ho2: orange;
+$btnBGC_ho3: red;
+$btnC:white;
+
+@mixin basicproperty($C,$BGC,$W,$H,$FS){
+    color:$C;
+    background-color:$BGC;
+    width:$W;
+    height:$H;
+    font-size:$FS;
+}
+
+@keyframes btnhover{
+    0% {
+        background-color: $btnBGC;
+    }
+    40% {
+        background-color: $btnBGC_ho1;
+    }
+    60% {
+        background-color: $btnBGC_ho2;
+    }
+    100% {
+        background-color: $btnBGC_ho3;
+    }
+}
+
+body {
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+#panel {
+    @include basicproperty(black,$panelC,$AW,$AH,20px);
+    position:relative;
+    
+    #result {
+        position:absolute;
+        @include basicproperty(black,white,$resultW,$resultH,$resultFS);
+        top:50px;
+        left:50px;
+        border-radius: 10px 10px 10px 10px;
+        text-align: right;
+        overflow-x: auto;
+        overflow-y: hidden;
+        white-space: nowrap; 
+        direction: ltr; 
+        resize: none;
+        height: $resultH;
+        width: $resultW;
+        min-height: $resultH;
+        max-height: $resultH;
+        min-width: $resultW;
+        max-width: $resultW;
+        box-sizing: border-box;
+        display: flex;
+        align-items: center;
+        padding-top: 0;
+        padding-bottom: 0;
+        line-height: $resultH;
+    }
+    
+    #btnpanel {
+        position:absolute;
+        top:200px;
+        left:25px;
+        @include basicproperty(black,$panelC,$btnpanelW,$btnpanelH,20px);
+        display:grid;
+        grid-template-columns: repeat(5,$btnpanel_space);
+        grid-template-rows:repeat(5,$btnpanel_space);
+        justify-content:center;
+        justify-items:center;
+        align-content:center;
+        align-items:center;
+
+        .btnclick {
+            @include basicproperty($btnC,$btnBGC,$btnW,$btnH,$btnFS);
+            border-radius: 10%;
+        }
+        #nine {
+            grid-row: 2;
+            grid-column: 3;
+        }
+        #eight {
+            grid-row: 2;
+            grid-column: 2;
+        }
+        #seven {
+            grid-row: 2;
+            grid-column: 1;
+        }
+        #six {
+            grid-row: 3;
+            grid-column: 3;
+        }
+        #five {
+            grid-row: 3;
+            grid-column: 2;
+        }
+        #four {
+            grid-row: 3;
+            grid-column: 1;
+        }
+        #three {
+            grid-row: 4;
+            grid-column: 3;
+        }
+        #two {
+            grid-row: 4;
+            grid-column: 2;
+        }
+        #one {
+            grid-row: 4;
+            grid-column: 1;
+        }
+        #zero {
+            grid-row: 5;
+            grid-column: 1;
+        }
+        #zerozero {
+            grid-row: 5;
+            grid-column: 2;
+        }
+        #decimal {
+            grid-row: 5;
+            grid-column: 3;
+        }
+        #equals {
+            grid-row: 5;
+            grid-column: 4;
+        }
+        #add {
+            grid-row: 5;
+            grid-column: 5;
+        }
+        #subtract {
+            grid-row: 4;
+            grid-column: 5;
+        }
+        #multiply {
+            grid-row: 3;
+            grid-column: 5;
+        }
+        #divide {
+            grid-row: 2;
+            grid-column: 5;
+        }
+        #sine{
+            grid-row: 3;
+            grid-column: 4;
+        }
+        #cosin {
+            grid-row: 4;
+            grid-column: 4;
+        }
+        #rev {
+            grid-row: 2;
+            grid-column: 4;
+        }
+        #open{
+            grid-row: 1;
+            grid-column: 1;
+        }
+        #clear{
+            grid-row: 1;
+            grid-column: 2; 
+        }
+        #left{
+            grid-row: 1;
+            grid-column: 3; 
+        }   
+        #right{
+            grid-row: 1;
+            grid-column: 4; 
+        }
+        #sqrt{
+            grid-row: 1;
+            grid-column: 5;
+        }
+        .btnclick:hover {
+            animation-name: btnhover;
+            animation-duration: 2s;
+            animation-timing-function: linear;
+            animation-iteration-count: 1;
+            animation-fill-mode: forwards;
+            cursor: pointer;
+        }
+    }
+}
